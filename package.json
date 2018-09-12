@@ -1,0 +1,31 @@
+{
+  "name": "cals-rooster-api",
+  "version": "1.0.0",
+  "description": "Backend RESTful API voor infoweb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/V1RE/cals-rooster-api.git"
+  },
+  "author": "Niels Mentink",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/V1RE/cals-rooster-api/issues"
+  },
+  "homepage": "https://github.com/V1RE/cals-rooster-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "ics": "^2.7.2",
+    "jquery": "^3.3.1",
+    "jsdom": "^12.0.0",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
