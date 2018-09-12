@@ -94,5 +94,3 @@ module.exports.getCSRF = getCSRF;
 module.exports.getSchedule = getSchedule;
 module.exports.scheduleToJSON = scheduleToJSON;
 module.exports.JSONToICS = JSONToICS;
-
-// console.log(cookieJar.getCookieString(config.rooster.baseUrl));

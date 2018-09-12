@@ -13,11 +13,25 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 api.get('/', function (req, res) {
-  lib.getCSRF(function(csrf, j) {
-    lib.getSchedule("115626", "test", "37", csrf, j, function(data) {
+  lib.getCSRF(function(csrf, cjar) {
+    lib.getSchedule(req.query.u, req.query.p, req.query.w, csrf, cjar, function(data) {
       lib.scheduleToJSON(data, function (events) {
         lib.JSONToICS(events, function (output) {
           res.send(output);
+          console.log(req.body);
+        });
+      });
+    });
+  });
+});
+
+api.post('/', function (req, res) {
+  lib.getCSRF(function(csrf, cjar) {
+    lib.getSchedule(req.body.username, req.body.password, req.body.week, csrf, cjar, function(data) {
+      lib.scheduleToJSON(data, function (events) {
+        lib.JSONToICS(events, function (output) {
+          res.send(output);
+          console.log(req.body);
         });
       });
     });
