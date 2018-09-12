@@ -39,7 +39,19 @@ function getSchedule(username, password, week, csrf, cjar, callback) {
   });
 }
 
-function scheduleToICS(data, callback) {
+function JSONToICS(events, callback) {
+  ics.createEvents(events, function (err, output) {
+    if (!err) {
+      console.log(output);
+      callback(output);
+    } else {
+      console.error(err);
+      throw err;
+    }
+  });
+}
+
+function scheduleToJSON(data, callback) {
   const dom = new jsdom.JSDOM(data);
   const $ = (require('jquery'))(dom.window);
   var weeknum = $("option[selected='selected']").val();
@@ -75,20 +87,12 @@ function scheduleToICS(data, callback) {
     }
     events[events.length] = event;
   });
-  console.log(events);
-  ics.createEvents(events, function (err, output) {
-    if (!err) {
-      console.log(output);
-      callback(output);
-    } else {
-      console.error(err);
-      throw err;
-    }
-  });
+  callback(events);
 }
 
-  module.exports.getCSRF = getCSRF;
-  module.exports.getSchedule = getSchedule;
-  module.exports.scheduleToICS = scheduleToICS;
+module.exports.getCSRF = getCSRF;
+module.exports.getSchedule = getSchedule;
+module.exports.scheduleToJSON = scheduleToJSON;
+module.exports.JSONToICS = JSONToICS;
 
-  // console.log(cookieJar.getCookieString(config.rooster.baseUrl));
+// console.log(cookieJar.getCookieString(config.rooster.baseUrl));
