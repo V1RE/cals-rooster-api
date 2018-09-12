@@ -3,6 +3,7 @@ const config = require('./config.json');
 const jsdom = require('jsdom');
 const moment = require('moment');
 const ics = require('ics');
+const mongoose = require('mongoose');
 
 moment.locale("nl");
 
