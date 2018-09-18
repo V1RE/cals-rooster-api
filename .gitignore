@@ -61,4 +61,5 @@ typings/
 .next
 
 # config with sensitive data
-# config.json
+config.json
+users.json
