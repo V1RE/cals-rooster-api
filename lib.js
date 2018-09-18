@@ -3,7 +3,6 @@ const config = require('./config.json');
 const jsdom = require('jsdom');
 const moment = require('moment');
 const ics = require('ics');
-const mongoose = require('mongoose');
 
 moment.locale("nl");
 
@@ -91,7 +90,14 @@ function scheduleToJSON(data, callback) {
   callback(events);
 }
 
+function getArrayItem(array, query, match) {
+  return array[array.findIndex(function (arrayItem) {
+    return arrayItem[query] == match;
+  })];
+}
+
 module.exports.getCSRF = getCSRF;
 module.exports.getSchedule = getSchedule;
 module.exports.scheduleToJSON = scheduleToJSON;
 module.exports.JSONToICS = JSONToICS;
+module.exports.getArrayItem = getArrayItem;

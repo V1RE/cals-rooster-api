@@ -42,14 +42,11 @@ api.post('/rooster/', function (req, res) {
 api.post('/register/', function (req, res) {
   fs.readFile("./users.json", function (err, body) {
     if(!err){
-      users = JSON.parse(body);
-      usernum = users.findIndex(function (user) {
-        return user.email == req.body.email;
-      });
-      if (usernum == -1) {
-        console.log("New user created!");
+      user = lib.getArrayItem(JSON.parse(body), "email", req.body.email);
+      if (user) {
+        res.json(user)
       } else {
-        console.error("This user already exists");
+        res.send("test");
       }
     }
   })
