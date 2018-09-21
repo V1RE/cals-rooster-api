@@ -6,25 +6,33 @@ const getSchedule = require('./getSchedule');
 const JSONToICS = require('./JSONToICS');
 const scheduleToJSON = require('./scheduleToJSON');
 const registerUser = require('./registerUser');
-const getUsers = require('./getUsers');
 
 var api = express.Router();
 
-api.get('/rooster/', function (req, res) {
-  getCSRF(function(csrf, cjar) {
-    getSchedule(req.query.u, req.query.p, req.query.w, csrf, cjar, function(data) {
-      scheduleToJSON(data, function (events) {
-        JSONToICS(events, function (output) {
-          res.send(output);
-          console.log(req.body);
+api.get('/rooster/:_id', function (req, res) {
+  lib.getUsers(function(users) {
+    user = lib.getArrayItem(users, "_id", req.params._id);
+    if (!user) {
+      res.json({
+        "status": "error",
+        "body": "This user does not exist"
+      });
+    } else {
+      getCSRF(function(csrf, cjar) {
+        getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().week(), csrf, cjar, function(data) {
+          scheduleToJSON(data, function (events) {
+            JSONToICS(events, function (output) {
+              res.send(output);
+            });
+          });
         });
       });
-    });
+    }
   });
 });
 
 api.post('/rooster/', function (req, res) {
-  getUsers(function(users) {
+  lib.getUsers(function(users) {
     user = lib.getArrayItem(users, "email", req.body.email);
     if (!user) {
       res.json({
