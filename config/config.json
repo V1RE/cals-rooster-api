@@ -1,8 +1,0 @@
-{
-  "rooster": {
-    "baseUrl": "http://tref.cals.nl/roosters/infoweb/index.php"
-  },
-  "server": {
-    "port": 8080
-  }
-}

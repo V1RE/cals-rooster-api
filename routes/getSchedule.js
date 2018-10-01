@@ -1,6 +1,9 @@
+// Adding request package
 const request = require('request');
 
+// Function for getting HTML data of schedule selected week
 module.exports = function getSchedule(username, password, week, csrf, cjar, callback) {
+  // Sending post request with login data, csrf code + cookies and the week
   request.post({
     url: config.rooster.baseUrl,
     jar: cjar,
@@ -12,7 +15,12 @@ module.exports = function getSchedule(username, password, week, csrf, cjar, call
       weeknummer: week
     }
   }, function (err, res, body) {
-    console.log(body);
-    callback(body);
+    if(!err){
+      // Sends HTML data back
+      callback(body);
+    } else {
+      // Throws error
+      throw err;
+    }
   });
 }

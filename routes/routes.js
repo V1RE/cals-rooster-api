@@ -11,7 +11,7 @@ var api = express.Router();
 
 api.get('/rooster/:_id', function (req, res) {
   lib.getUsers(function(users) {
-    user = lib.getArrayItem(users, "_id", req.params._id);
+    var user = lib.getArrayItem(users, "_id", req.params._id);
     if (!user) {
       res.json({
         "status": "error",
@@ -33,7 +33,7 @@ api.get('/rooster/:_id', function (req, res) {
 
 api.post('/rooster/', function (req, res) {
   lib.getUsers(function(users) {
-    user = lib.getArrayItem(users, "email", req.body.email);
+    var user = lib.getArrayItem(users, "email", req.body.email);
     if (!user) {
       res.json({
         "status": "error",
