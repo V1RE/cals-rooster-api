@@ -1,7 +1,6 @@
 // Adding packages
 const express = require('express');
 const bodyParser = require('body-parser');
-const moment = require('moment');
 const path = require('path');
 
 // Define globals for easier use troughout the project
