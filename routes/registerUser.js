@@ -6,12 +6,18 @@ module.exports = function registerUser(requser, callback) {
     user = lib.getArrayItem(users, "email", requser.email);
     if (user) {
       callback({
-        "message": "E-mailadres is al in gebruik",
+        "message": "email address is already in use",
         "status": "error"
       });
-    } else if (requser.email && requser.password && requser.infoweb.password && requser.infoweb.username) {
+    } else if (requser.password.length < 8 || requestAnimationFrame.password.length > 256) {
+      callback({
+        "status": "error",
+        "message": "password has to contain a minimum of 8 and a maximum of 256 characters"
+      });
+    } else if (requser.email && requser.password && requser.infoweb.password && requser.infoweb.username && requser.fullName) {
       newuser = {
         "_id": md5(md5(requser.email)+md5(requser.password)),
+        "fullName": requser.fullName,
         "email": requser.email,
         "password": md5(requser.password),
         "infoweb": {

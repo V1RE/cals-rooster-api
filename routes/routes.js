@@ -21,7 +21,7 @@ api.get('/rooster/:_id', function (req, res) {
       getCSRF(function(csrf, cjar) {
         getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().week(), csrf, cjar, function(data) {
           scheduleToJSON(data, function (events) {
-            JSONToICS(events, function (output) {
+            JSONToICS(events, user, function (output) {
               res.send(output);
             });
           });
