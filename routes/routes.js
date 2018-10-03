@@ -1,11 +1,11 @@
+const JSONToICS = require('./JSONToICS');
 const express = require('express');
-const moment = require('moment');
-const md5 = require('md5');
 const getCSRF = require('./getCSRF');
 const getSchedule = require('./getSchedule');
-const JSONToICS = require('./JSONToICS');
-const scheduleToJSON = require('./scheduleToJSON');
+const md5 = require('md5');
+const moment = require('moment');
 const registerUser = require('./registerUser');
+const scheduleToJSON = require('./scheduleToJSON');
 
 var api = express.Router();
 

@@ -1,7 +1,7 @@
 // Adding packages
+const fs = require('fs');
 const moment = require('moment');
 const path = require('path');
-const fs = require('fs');
 
 // Setting locale to the netherlands for recognition of dutch abbreviations of days
 moment.locale("nl");

@@ -1,16 +1,16 @@
 // Adding packages
-const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
 const path = require('path');
 
 // Define globals for easier use troughout the project
-global.config = require(__dirname + '/config/config.json');
 global.appRoot = path.resolve(__dirname);
+global.config = require(__dirname + '/config/config.json');
 global.lib = require('./lib.js');
 
 // Setting up Express webserver
-var app = express();
 var api = require('./routes/routes.js');
+var app = express();
 
 // Adds bodyParser middleware for JSON request data
 app.use(bodyParser.urlencoded({

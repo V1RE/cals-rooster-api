@@ -1,5 +1,5 @@
-const md5 = require('md5');
 const fs = require('fs');
+const md5 = require('md5');
 
 module.exports = function registerUser(requser, callback) {
   lib.getUsers(function (users) {

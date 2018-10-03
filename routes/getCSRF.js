@@ -1,7 +1,7 @@
-// Adding request package for sending http requests to infoweb
-const request = require('request');
 // Adding jsDOM package for modifying a backend local DOM
 const jsdom = require('jsdom');
+// Adding request package for sending http requests to infoweb
+const request = require('request');
 
 module.exports = function getCSRF(callback) {
   // Creating cookiejar to store the first part of the CSRF authentication code

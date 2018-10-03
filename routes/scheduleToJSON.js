@@ -1,5 +1,5 @@
-const moment = require('moment');
 const jsdom = require('jsdom');
+const moment = require('moment');
 
 module.exports = function scheduleToJSON(data, callback) {
   const dom = new jsdom.JSDOM(data);
