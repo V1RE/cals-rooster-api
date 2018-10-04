@@ -61,7 +61,6 @@ typings/
 .next
 
 # config with sensitive data
-config.json
 users.json
 
 # GitPod editor files
