@@ -34,8 +34,8 @@ module.exports = function scheduleToJSON(data, callback) {
           before: true
         }
       }]
-    }
+    };
     events[events.length] = event;
   });
   callback(events);
-}
+};

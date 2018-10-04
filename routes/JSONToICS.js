@@ -17,4 +17,4 @@ module.exports = function JSONToICS(events, user, callback) {
       throw err;
     }
   });
-}
+};

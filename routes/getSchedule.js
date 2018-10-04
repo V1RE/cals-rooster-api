@@ -23,4 +23,4 @@ module.exports = function getSchedule(username, password, week, csrf, cjar, call
       throw err;
     }
   });
-}
+};

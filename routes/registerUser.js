@@ -24,10 +24,10 @@ module.exports = function registerUser(requser, callback) {
           "username": requser.infoweb.username,
           "password": requser.infoweb.password
         }
-      }
-      users[users.length] = newuser
+      };
+      users[users.length] = newuser;
       lib.setUsers(users, function (output) {
-        callback(output)
+        callback(output);
       });
     } else {
       callback({
@@ -36,4 +36,4 @@ module.exports = function registerUser(requser, callback) {
       });
     }
   });
-}
+};

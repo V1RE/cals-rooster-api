@@ -24,4 +24,4 @@ module.exports = function getCSRF(callback) {
       throw err;
     }
   });
-}
+};
