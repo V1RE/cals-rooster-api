@@ -18,11 +18,26 @@ api.get('/rooster/:_id', function (req, res) {
         "body": "This user does not exist"
       });
     } else {
+      console.log(moment().week());
+      console.log(moment().add(1, 'w').week());
       getCSRF(function(csrf, cjar) {
         getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().week(), csrf, cjar, function(data) {
           scheduleToJSON(data, function (events) {
-            JSONToICS(events, user, function (output) {
-              res.send(output);
+            getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().add(1, 'week').week(), csrf, cjar, function(data1) {
+              scheduleToJSON(data1, function (events1) {
+                getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().add(2, 'week').week(), csrf, cjar, function(data2) {
+                  scheduleToJSON(data2, function (events2) {
+                    getSchedule(user.infoweb.username, user.infoweb.password, req.body.week = moment().add(3, 'week').week(), csrf, cjar, function(data3) {
+                      scheduleToJSON(data3, function (events3) {
+                        console.log(JSON.stringify(events.concat(events1, events2, events3)));
+                        JSONToICS(events.concat(events1, events2, events3), user, function (output) {
+                          res.send(output);
+                        });
+                      });
+                    });
+                  });
+                });
+              });
             });
           });
         });
