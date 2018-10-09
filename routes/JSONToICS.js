@@ -9,7 +9,7 @@ module.exports = function JSONToICS(events, user, callback) {
       .replace(/DTSTART/g, "DTSTART;TZID=Europe/Amsterdam")
       .replace(/DTEND/g, "DTEND;TZID=Europe/Amsterdam")
       .replace("PRODID:adamgibbons/ics", "PRODID:cals-rooster-api\/\/Niels Mentink, Yannick Mackor and Tom van Poppelen");
-      console.log(output);
+      //console.log(output);
       // Sends ics data back to user
       callback(output);
     } else {

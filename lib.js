@@ -1,10 +1,7 @@
 // Adding packages
 const fs = require('fs');
 const moment = require('moment');
-const mongoose = require('mongoose');
 const path = require('path');
-
-mongoose.connect('mongodb://admin:test1234@ds251902.mlab.com:51902/infoweb');
 
 // Setting locale to the netherlands for recognition of dutch abbreviations of days
 moment.locale("nl");
@@ -59,4 +56,3 @@ module.exports.getArrayItem = getArrayItem;
 module.exports.getRoot = getRoot;
 module.exports.getUsers = getUsers;
 module.exports.setUsers = setUsers;
-module.exports.models = require(getRoot("/models/"));
